@@ -252,50 +252,50 @@ static const PWMManager::PWMStep pDimPulseSequence[] = {
 };
 static const PWMManager::PWMProgram cDimPulseProgram(pDimPulseSequence, _arraysize(pDimPulseSequence));
 
-static const PWMManager::PWMStep pCompressSequence1[] = {
+static const PWMManager::PWMStep pReactorSequence1[] = {
     {0.2f, 0.0f}, 
     {0.2f, 0.0f}, 
     {0.2f, 0.0f},
     {0.2f, 0.0f}, 
     {0.2f, 0.0f}, 
     {0.2f, 0.0f},
-    {0.2f, 0.4f}, 
+    {0.2f, 0.2f}, 
+    {0.2f, 0.5f}, 
     {0.2f, 0.8f}, 
-    {0.2f, 1.0f}, 
-    {0.2f, 0.8f}, 
-    {0.2f, 0.4f}, 
+    {0.2f, 0.5f}, 
+    {0.2f, 0.2f}, 
 };
-static const PWMManager::PWMProgram cCompressProgram1(pCompressSequence1, _arraysize(pCompressSequence1));
+static const PWMManager::PWMProgram cReactorProgram1(pReactorSequence1, _arraysize(pReactorSequence1));
 
-static const PWMManager::PWMStep pCompressSequence2[] = {
+static const PWMManager::PWMStep pReactorSequence2[] = {
     {0.1f, 0.0f}, 
     {0.1f, 0.0f}, 
     {0.1f, 0.0f},
     {0.1f, 0.0f}, 
     {0.1f, 0.0f}, 
     {0.1f, 0.0f},
-    {0.1f, 0.4f}, 
-    {0.1f, 0.8f}, 
+    {0.1f, 0.2f}, 
+    {0.1f, 0.5f}, 
     {0.1f, 1.0f}, 
-    {0.1f, 0.8f}, 
-    {0.1f, 0.4f}, 
+    {0.1f, 0.5f}, 
+    {0.1f, 0.2f}, 
 };
-static const PWMManager::PWMProgram cCompressProgram2(pCompressSequence2, _arraysize(pCompressSequence2));
+static const PWMManager::PWMProgram cReactorProgram2(pReactorSequence2, _arraysize(pReactorSequence2));
 
-static const PWMManager::PWMStep pCompressSequence3[] = {
+static const PWMManager::PWMStep pReactorSequence3[] = {
     {0.05f, 0.0f}, 
     {0.05f, 0.0f}, 
     {0.05f, 0.0f},
     {0.05f, 0.0f}, 
     {0.05f, 0.0f}, 
     {0.05f, 0.0f},
-    {0.05f, 0.4f}, 
-    {0.05f, 0.8f}, 
+    {0.05f, 0.2f}, 
+    {0.05f, 0.5f}, 
     {0.05f, 1.0f}, 
-    {0.05f, 0.8f}, 
-    {0.05f, 0.4f}, 
+    {0.05f, 0.5f}, 
+    {0.05f, 0.2f}, 
 };
-static const PWMManager::PWMProgram cCompressProgram3(pCompressSequence3, _arraysize(pCompressSequence3));
+static const PWMManager::PWMProgram cReactorProgram3(pReactorSequence3, _arraysize(pReactorSequence3));
 
 static const PWMManager::PWMStep pIndicatorsFlash[] = {
     {0.05f, 1.0f},
@@ -309,7 +309,7 @@ static const PWMManager::PWMStep pIndicatorsFlash[] = {
 };
 static const PWMManager::PWMProgram cIndicatorsProgram(pIndicatorsFlash, _arraysize(pIndicatorsFlash));
 
-static const PWMManager::PWMStep pWaterfallSequence[] = {
+static const PWMManager::PWMStep pSTSequence1[] = {
     {0.2f, 0.0f}, 
     {0.2f, 0.2f},
     {0.2f, 0.4f}, 
@@ -320,29 +320,63 @@ static const PWMManager::PWMStep pWaterfallSequence[] = {
     {0.2f, 0.2f},
     {0.2f, 0.0f},
 };
-static const PWMManager::PWMProgram cMainSDProgram0(pWaterfallSequence, _arraysize(pWaterfallSequence));
+static const PWMManager::PWMProgram cSTProgram1(pSTSequence1, _arraysize(pSTSequence1));
 
-static const PWMManager::PWMStep pHeartbeat[] = {
-    {0.1f, 0.8f}, 
+static const PWMManager::PWMStep pSTSequence2[] = {
     {0.1f, 0.0f}, 
-    {0.2f, 0.0f}, 
+    {0.1f, 0.2f},
+    {0.1f, 0.4f}, 
+    {0.1f, 0.8f}, 
     {0.1f, 1.0f}, 
-    {0.1f, 0.2f}, 
-    {0.3f, 0.0f},
+    {0.1f, 0.8f},
+    {0.1f, 0.4f},
+    {0.1f, 0.2f},
+    {0.1f, 0.0f},
 };
+static const PWMManager::PWMProgram cSTProgram2(pSTSequence2, _arraysize(pSTSequence2));
 
-static const PWMManager::PWMStep pMalevolent[] = {
-    {1.0f, 0.1f}, 
-    {0.2f, 0.05f}, 
-    {0.2f, 0.05f}, 
-    {0.2f, 0.05f}, 
-    {0.2f, 0.05f}, 
-    {1.0f, 1.0f},
+static const PWMManager::PWMStep pSTSequence3[] = {
+    {0.05f, 0.0f}, 
+    {0.05f, 0.2f},
+    {0.05f, 0.4f}, 
+    {0.05f, 0.8f}, 
+    {0.05f, 1.0f}, 
+    {0.05f, 0.8f},
+    {0.05f, 0.4f},
+    {0.05f, 0.2f},
+    {0.05f, 0.0f},
 };
+static const PWMManager::PWMProgram cSTProgram3(pSTSequence2, _arraysize(pSTSequence2));
+
+static const PWMManager::PWMStep pTBSequence1[] = {
+    {0.4f, 0.1f}, 
+    {0.4f, 0.2f},
+    {0.4f, 0.4f},
+    {0.4f, 0.5f}, 
+    {0.4f, 0.4f},
+    {0.4f, 0.2f}, 
+    {0.4f, 0.1f},
+};
+static const PWMManager::PWMProgram cTBProgram12(pTBSequence1, _arraysize(pTBSequence1));
+
+static const PWMManager::PWMStep pTBSequence3[] = {
+    {0.2f, 0.1f}, 
+    {0.2f, 0.0f},
+    {0.2f, 0.3f},
+    {0.2f, 0.0f}, 
+    {0.2f, 0.7f},
+    {0.2f, 0.0f}, 
+    {0.2f, 1.0f},
+    {0.2f, 0.0f},
+    {0.2f, 0.0f},
+};
+static const PWMManager::PWMProgram cTBProgram3(pTBSequence3, _arraysize(pTBSequence3));
+
 
 static PWMManager *spFullPWMManager = nullptr;
 
 // Light step sequences
+//-----------------------------------------------------------------------------
 typedef void (*LEDLoadFn)(void);
 
 static void _allOff(void) {
@@ -359,6 +393,7 @@ static void _allOff(void) {
 }
 
 // Reactor steps
+//-------------------------------------
 static void _reactorStep0(void) {
     printf("reactor step 0\r\n");
     _allOff();
@@ -366,17 +401,48 @@ static void _reactorStep0(void) {
 }
 static void _reactorStep1(void) {
     printf("reactor step 1\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram1, 3);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram1, 3);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram1, 3);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram1, 3);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram1, 2);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram1, 2);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram1, 2);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram1, 1);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram1, 1);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram1, 0);
 }
 static void _reactorStep2(void) {
     printf("reactor step 2\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram2, 3);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram2, 3);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram2, 3);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram2, 3);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram2, 2);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram2, 2);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram2, 2);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram2, 1);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram2, 1);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram2, 0);
 }
 static void _reactorStep3(void) {
     printf("reactor step 3\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram3, 3);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram3, 3);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram3, 3);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram3, 3);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram3, 2);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram3, 2);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram3, 2);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram3, 1);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram3, 1);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram3, 0);
 }
 static LEDLoadFn spReactorSteps[] = { _reactorStep0, _reactorStep1, _reactorStep2, _reactorStep3, nullptr};
 
 
 // Sonic transducer steps
+//-------------------------------------
 static void _sonicTransducerStep0(void) {
     printf("sonic transducer step 0\r\n");
     _allOff();
@@ -385,46 +451,67 @@ static void _sonicTransducerStep0(void) {
 }
 
 int64_t _intoSDLevel1(alarm_id_t id, void *user_data) {
-    spFullPWMManager->setProgram(kTop, cMainSDProgram0, 3);
-    spFullPWMManager->setProgram(kRow1c1, cMainSDProgram0, 2);
-    spFullPWMManager->setProgram(kRow1c2, cMainSDProgram0, 2);
-    spFullPWMManager->setProgram(kRow1c3, cMainSDProgram0, 2);
-    spFullPWMManager->setProgram(kRow2c1, cMainSDProgram0, 1);
-    spFullPWMManager->setProgram(kRow2c2, cMainSDProgram0, 1);
-    spFullPWMManager->setProgram(kRow2c3, cMainSDProgram0, 1);
-    spFullPWMManager->setProgram(kRow3c1, cMainSDProgram0, 0);
-    spFullPWMManager->setProgram(kRow3c2, cMainSDProgram0, 0);
-    spFullPWMManager->setProgram(kRow3c3, cMainSDProgram0, 0);
+    spFullPWMManager->setProgram(kTop, cSTProgram1, 3);
+    spFullPWMManager->setProgram(kRow1c1, cSTProgram1, 2);
+    spFullPWMManager->setProgram(kRow1c2, cSTProgram1, 2);
+    spFullPWMManager->setProgram(kRow1c3, cSTProgram1, 2);
+    spFullPWMManager->setProgram(kRow2c1, cSTProgram1, 1);
+    spFullPWMManager->setProgram(kRow2c2, cSTProgram1, 1);
+    spFullPWMManager->setProgram(kRow2c3, cSTProgram1, 1);
+    spFullPWMManager->setProgram(kRow3c1, cSTProgram1, 0);
+    spFullPWMManager->setProgram(kRow3c2, cSTProgram1, 0);
+    spFullPWMManager->setProgram(kRow3c3, cSTProgram1, 0);
     return 0;
 }
 
 static void _sonicTransducerStep1(void) {
     printf("sonic transducer step 1\r\n");
-    spFullPWMManager->setProgram(kTop, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow1c1, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow1c2, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow1c3, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow2c1, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow2c2, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow2c3, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow3c1, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow3c2, cIndicatorsProgram, 0);
-    spFullPWMManager->setProgram(kRow3c3, cIndicatorsProgram, 0);
+    spFullPWMManager->setProgram(kTop, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow1c1, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow1c2, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow1c3, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow2c1, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow2c2, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow2c3, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow3c1, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow3c2, cIndicatorsProgram, 0, false);
+    spFullPWMManager->setProgram(kRow3c3, cIndicatorsProgram, 0, false);
     add_alarm_in_ms(2000, _intoSDLevel1, nullptr, false);
 }
 
 static void _sonicTransducerStep2(void) {
     printf("sonic transducer step 2\r\n");
+    spFullPWMManager->setProgram(kTop, cSTProgram2, 3);
+    spFullPWMManager->setProgram(kRow1c1, cSTProgram2, 2);
+    spFullPWMManager->setProgram(kRow1c2, cSTProgram2, 2);
+    spFullPWMManager->setProgram(kRow1c3, cSTProgram2, 2);
+    spFullPWMManager->setProgram(kRow2c1, cSTProgram2, 1);
+    spFullPWMManager->setProgram(kRow2c2, cSTProgram2, 1);
+    spFullPWMManager->setProgram(kRow2c3, cSTProgram2, 1);
+    spFullPWMManager->setProgram(kRow3c1, cSTProgram2, 0);
+    spFullPWMManager->setProgram(kRow3c2, cSTProgram2, 0);
+    spFullPWMManager->setProgram(kRow3c3, cSTProgram2, 0);
 }
 
 static void _sonicTransducerStep3(void) {
     printf("sonic transducer step 3\r\n");
+    spFullPWMManager->setProgram(kTop, cSTProgram3, 3);
+    spFullPWMManager->setProgram(kRow1c1, cSTProgram3, 2);
+    spFullPWMManager->setProgram(kRow1c2, cSTProgram3, 2);
+    spFullPWMManager->setProgram(kRow1c3, cSTProgram3, 2);
+    spFullPWMManager->setProgram(kRow2c1, cSTProgram3, 1);
+    spFullPWMManager->setProgram(kRow2c2, cSTProgram3, 1);
+    spFullPWMManager->setProgram(kRow2c3, cSTProgram3, 1);
+    spFullPWMManager->setProgram(kRow3c1, cSTProgram3, 0);
+    spFullPWMManager->setProgram(kRow3c2, cSTProgram3, 0);
+    spFullPWMManager->setProgram(kRow3c3, cSTProgram3, 0);
 }
 
 static LEDLoadFn spSonicTransducerSteps[] = { _sonicTransducerStep0, _sonicTransducerStep1, _sonicTransducerStep2, _sonicTransducerStep3, nullptr};
 
 
 // Transit beam/crystal
+//-------------------------------------
 static void _transitBeamStep0(void) {
     printf("Transit beam step 0\r\n");
     _allOff();
@@ -434,16 +521,48 @@ static void _transitBeamStep0(void) {
 }
 static void _transitBeamStep1(void) {
     printf("Transit beam step 1\r\n");
+    spFullPWMManager->setProgram(kTop, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow1c1, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow1c2, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow1c3, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow2c1, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow2c2, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow2c3, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow3c1, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow3c2, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow3c3, cTBProgram12, 0);
 }
 static void _transitBeamStep2(void) {
     printf("Transit beam step 2\r\n");
+    spFullPWMManager->setProgram(kTop, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow1c3, cTBProgram12, 0);
+    spFullPWMManager->setProgram(kRow1c2, cTBProgram12, 1);
+    spFullPWMManager->setProgram(kRow1c1, cTBProgram12, 1);
+    spFullPWMManager->setProgram(kRow2c3, cTBProgram12, 1);
+    spFullPWMManager->setProgram(kRow2c2, cTBProgram12, 2);
+    spFullPWMManager->setProgram(kRow2c1, cTBProgram12, 2);
+    spFullPWMManager->setProgram(kRow3c3, cTBProgram12, 2);
+    spFullPWMManager->setProgram(kRow3c2, cTBProgram12, 3);
+    spFullPWMManager->setProgram(kRow3c1, cTBProgram12, 3);
 }
 static void _transitBeamStep3(void) {
     printf("Transit beam step 3\r\n");
+    spFullPWMManager->setProgram(kTop, cTBProgram3, 0);
+    spFullPWMManager->setProgram(kRow1c3, cTBProgram3, 0);
+    spFullPWMManager->setProgram(kRow1c2, cTBProgram3, 1);
+    spFullPWMManager->setProgram(kRow1c1, cTBProgram3, 1);
+    spFullPWMManager->setProgram(kRow2c3, cTBProgram3, 1);
+    spFullPWMManager->setProgram(kRow2c2, cTBProgram3, 2);
+    spFullPWMManager->setProgram(kRow2c1, cTBProgram3, 2);
+    spFullPWMManager->setProgram(kRow3c3, cTBProgram3, 2);
+    spFullPWMManager->setProgram(kRow3c2, cTBProgram3, 3);
+    spFullPWMManager->setProgram(kRow3c1, cTBProgram3, 3);
 }
+
 static LEDLoadFn spTransitBeamSteps[] = { _transitBeamStep0, _transitBeamStep1, _transitBeamStep2, _transitBeamStep3, nullptr};
 
 // Testing 
+//-------------------------------------
 static void _testingStep0(void) {
     printf("Testing step 0\r\n");
     spFullPWMManager->setProgram(kTop, cLightsTestProgram, 9);
@@ -499,6 +618,8 @@ static void _testingStep3(void) {
 static LEDLoadFn spTestingSteps[] = { _testingStep0, _testingStep1, _testingStep2, _testingStep3};
 
 
+// Sequence selection logic
+//-----------------------------------------------------------------------------
 #define kSequenceSteps      (_arraysize(spTestingSteps))
 #define kSequences          (4)
 static LEDLoadFn *spActiveSequence = spReactorSteps;
@@ -549,29 +670,9 @@ static void _sequenceStepDown(void) {
     }
 }
 
-/*
-    if ((nullptr == spCurrentProgram) || (spCurrentProgram == &cCompressProgram3)) {
-        spCurrentProgram = &cCompressProgram1;
-    } else if (spCurrentProgram == &cCompressProgram1) {
-        spCurrentProgram = &cCompressProgram2;
-    } else if (spCurrentProgram == &cCompressProgram2) {
-        spCurrentProgram = &cCompressProgram3;
-    }
-
-    // Reactor program
-    spFullPWMManager->setProgram(kTop, *spCurrentProgram, 0);
-    spFullPWMManager->setProgram(kRow1c1, *spCurrentProgram, 0);
-    spFullPWMManager->setProgram(kRow1c2, *spCurrentProgram, 1);
-    spFullPWMManager->setProgram(kRow1c3, *spCurrentProgram, 2);
-    spFullPWMManager->setProgram(kRow2c1, *spCurrentProgram, 0);
-    spFullPWMManager->setProgram(kRow2c2, *spCurrentProgram, 1);
-    spFullPWMManager->setProgram(kRow2c3, *spCurrentProgram, 2);
-    spFullPWMManager->setProgram(kRow3c1, *spCurrentProgram, 0);
-    spFullPWMManager->setProgram(kRow3c2, *spCurrentProgram, 1);
-    spFullPWMManager->setProgram(kRow3c3, *spCurrentProgram, 2);
-*/
 
 // Button state and handlers
+//-----------------------------------------------------------------------------
 static bool sbModeSelectActive = false;
 static bool sbInhibitRelease = false;
 static void _greenClick(void) {
@@ -595,6 +696,7 @@ static void _greenRelease(void) {
     if ((false == sbInhibitRelease) && (false == sbModeSelectActive)) {
         _sequenceStepUp();
     }
+    sbInhibitRelease = false;
 }
 
 static void _blueClick(void) {
@@ -640,6 +742,7 @@ static void _fobRelease(void) {
     if ((false == sbInhibitRelease) && (false == sbModeSelectActive)) {
         _sequenceStepUp();
     }
+    sbInhibitRelease = false;
 }
 
 static void _modeSwitchOn(void) {
@@ -652,7 +755,8 @@ static void _modeSwitchOff(void) {
     sbModeSelectActive = false;
 }
 
-
+// Button state machine
+//-----------------------------------------------------------------------------
 static bool _buttonCallback(struct repeating_timer *pTimer) {
     static uint uLastEventTicks(0);
     static bool sbLastGreenState(false), sbCurrentGreenState(false), sbGreenHoldFired(false), sbGreenDown(false);
@@ -761,6 +865,7 @@ static bool _buttonCallback(struct repeating_timer *pTimer) {
 
 
 // Main program sequence
+//-----------------------------------------------------------------------------
 int main() {
     // Initialize stdio functionality
     stdio_init_all();
