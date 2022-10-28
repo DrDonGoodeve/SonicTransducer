@@ -372,13 +372,10 @@ static const PWMManager::PWMStep pTBSequence3[] = {
 };
 static const PWMManager::PWMProgram cTBProgram3(pTBSequence3, _arraysize(pTBSequence3));
 
-
-static PWMManager *spFullPWMManager = nullptr;
-
 // Light step sequences
 //-----------------------------------------------------------------------------
 typedef void (*LEDLoadFn)(void);
-
+static PWMManager *spFullPWMManager = nullptr;
 static void _allOff(void) {
     spFullPWMManager->setProgram(kTop, cOffProgram, 0);
     spFullPWMManager->setProgram(kRow1c1, cOffProgram, 0);
@@ -558,8 +555,60 @@ static void _transitBeamStep3(void) {
     spFullPWMManager->setProgram(kRow3c2, cTBProgram3, 3);
     spFullPWMManager->setProgram(kRow3c1, cTBProgram3, 3);
 }
-
 static LEDLoadFn spTransitBeamSteps[] = { _transitBeamStep0, _transitBeamStep1, _transitBeamStep2, _transitBeamStep3, nullptr};
+
+// Alternate (full pulsing) reactor steps
+//-------------------------------------
+static void _altReactorStep0(void) {
+    printf("reactor step 0\r\n");
+    _allOff();
+    spFullPWMManager->setProgram(kRow2c3, cDimPulseProgram, 3);
+    spFullPWMManager->setProgram(kRow3c1, cDimPulseProgram, 2);
+    spFullPWMManager->setProgram(kRow3c2, cDimPulseProgram, 1);
+    spFullPWMManager->setProgram(kRow3c3, cDimPulseProgram, 0);
+}
+
+static void _altReactorStep1(void) {
+    printf("reactor step 1\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram1, 0);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram1, 0);
+}
+static void _altReactorStep2(void) {
+    printf("reactor step 2\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram2, 0);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram2, 0);
+}
+static void _altReactorStep3(void) {
+    printf("reactor step 3\r\n");
+    spFullPWMManager->setProgram(kTop, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow1c3, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow2c3, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow3c3, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow1c2, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow2c2, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow3c2, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow1c1, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow3c1, cReactorProgram3, 0);
+    spFullPWMManager->setProgram(kRow2c1, cReactorProgram3, 0);
+}
+static LEDLoadFn spAltReactorSteps[] = { _altReactorStep0, _altReactorStep1, _altReactorStep2, _altReactorStep3, nullptr};
+
 
 // Testing 
 //-------------------------------------
@@ -615,13 +664,13 @@ static void _testingStep3(void) {
     spFullPWMManager->setProgram(kRow3c2, cLightsTestProgram, 0);
     spFullPWMManager->setProgram(kRow3c3, cLightsTestProgram, 2);
 }
-static LEDLoadFn spTestingSteps[] = { _testingStep0, _testingStep1, _testingStep2, _testingStep3};
+static LEDLoadFn spTestingSteps[] = { _testingStep0, _testingStep1, _testingStep2, _testingStep3, nullptr};
 
 
 // Sequence selection logic
 //-----------------------------------------------------------------------------
 #define kSequenceSteps      (_arraysize(spTestingSteps))
-#define kSequences          (4)
+#define kSequences          (5)
 static LEDLoadFn *spActiveSequence = spReactorSteps;
 static uint suSequenceStep = 0;
 static void _resetSequence(void) {
@@ -639,6 +688,8 @@ static void _selectSequenceUp(void) {
     } else if (spActiveSequence == spSonicTransducerSteps) {
         spActiveSequence = spTransitBeamSteps;
     } else if (spActiveSequence == spTransitBeamSteps) {
+        spActiveSequence = spAltReactorSteps;
+    } else if (spActiveSequence == spAltReactorSteps) {
         spActiveSequence = spTestingSteps;
     }
     _resetSequence();
@@ -649,8 +700,10 @@ static void _selectSequenceDown(void) {
         spActiveSequence = spReactorSteps;
     } else if (spActiveSequence == spTransitBeamSteps) {
         spActiveSequence = spSonicTransducerSteps;
-    } else if (spActiveSequence == spTestingSteps) {
+    } else if (spActiveSequence == spAltReactorSteps) {
         spActiveSequence = spTransitBeamSteps;
+    } else if (spActiveSequence == spTestingSteps) {
+        spActiveSequence = spAltReactorSteps;
     }
     _resetSequence();
 }
